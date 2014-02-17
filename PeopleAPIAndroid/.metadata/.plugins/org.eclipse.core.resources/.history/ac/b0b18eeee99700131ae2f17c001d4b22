@@ -1,0 +1,78 @@
+/*
+*
+* Copyright (C) 2013,2014 Chris Berry twitter: @the_chrisberry
+* This file is part of PeopleAPI. 
+*
+* PeopleAPI is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PeopleAPI  is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+*/
+package com.peopleapi;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class LoginMainActivity extends Activity {
+
+	private EditText username = null;
+	private EditText password = null;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.login_main);
+		username = (EditText) findViewById(R.id.editUserName);
+		password = (EditText) findViewById(R.id.editPassword);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.login_main, menu);
+		return true;
+	}
+
+	public void showRegister(View view) {
+		// this will launch the register screen
+		Intent intent = new Intent(LoginMainActivity.this,
+				RegisterActivity.class);
+		startActivity(intent);
+	}
+
+	public void loginUser(View view) {
+		// login a User by passing parameters to the A-sync task
+		String[] apiParms = { username.getText().toString(),
+				password.getText().toString() };
+		Object id = null;
+		LogInToApi apiCall = new LogInToApi(id, LoginMainActivity.this);
+		apiCall.execute(apiParms);
+	}
+
+	public void setTheUIResponse(String result) {
+		Intent intent = new Intent(LoginMainActivity.this,	ResultsFromApi.class);
+		intent.putExtra("APIResult", result);
+		startActivity(intent);
+	}
+
+}

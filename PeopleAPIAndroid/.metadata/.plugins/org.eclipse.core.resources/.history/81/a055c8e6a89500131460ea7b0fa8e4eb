@@ -1,0 +1,50 @@
+package com.peopleapi;
+
+import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class ResultsFromApi extends Activity {
+
+	private TextView _results = null;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.results_main);
+		_results = (TextView) findViewById(R.id.txtResult);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.register_main, menu);
+		return true;
+	}
+
+	public void ShowResultsFromApi(String xmessage) {
+		try {
+
+			JSONArray json = new JSONArray(xmessage);
+			for (int i = 0; i < json.length(); i++) {
+				HashMap<String, String> map = new HashMap<String, String>();
+				JSONObject e = json.getJSONObject(i);
+				String x = String.valueOf(i);
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+}

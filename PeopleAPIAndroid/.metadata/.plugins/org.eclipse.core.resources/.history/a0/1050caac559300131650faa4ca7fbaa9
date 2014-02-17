@@ -1,0 +1,20 @@
+package com.peopleapi;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+
+public class LogInToApi extends AsyncTask<String, Integer, String> {
+	private ProgressDialog pDialog;
+	private Context context;
+
+	public LogInToApi(Object id, LoginMainActivity mainActivity) {
+		//set the context of the activity
+		context = mainActivity;
+	}
+
+	@Override
+	protected String doInBackground(String... params) {
+		return null;
+	}
+}

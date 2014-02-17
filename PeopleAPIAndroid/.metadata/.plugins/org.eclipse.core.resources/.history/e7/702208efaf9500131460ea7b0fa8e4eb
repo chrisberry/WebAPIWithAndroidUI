@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">People API</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="login_tile">Login</string>
+    <string name="register_tile">Register</string>
+    <string name="register_prompt">No Account? Register here!</string>
+    <string name="password">Password:</string>
+    <string name="confirm_password">Confirm Password:</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="username">User Name:</string>
+</resources>

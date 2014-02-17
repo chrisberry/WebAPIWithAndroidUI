@@ -1,0 +1,21 @@
+package com.peopleapi;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+
+public class RegisterWithApi  extends AsyncTask<String, Integer, String> {
+	private ProgressDialog pDialog;
+	private Context context;
+	
+	
+	public RegisterWithApi(Object id, RegisterActivity mainActivity) {
+		//set the context of the activity
+		context = mainActivity;
+	}
+	
+	
+	@Override
+	protected String doInBackground(String... params) {
+		return null;
+	}
+}

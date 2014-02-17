@@ -1,0 +1,44 @@
+package com.peopleapi;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class ResultsFromApi extends Activity {
+
+	private TextView _results = null;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.results_main);
+		_results = (TextView) findViewById(R.id.txtResult);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.register_main, menu);
+		return true;
+	}
+
+	public void ShowResultsFromApi(String xmessage) {
+		try {
+			
+			String  x = "{userName=testing, token_type=bearer, expires_in=1209599, .issued=Tue, 11 Feb 2014 20:22:52 GMT, access_token=yvtG07NTPnP9owqbZPjsZltqhQaCcKweUvzOSMkDGgFs1-xT1Db46vzAn58Bbu3FSAmq2TqoY2FGIWWG1iEhnnjYeSrRfsvreKuQtcq_GQiV9z2RGnRv8udrDy9Z0IojN3uCvvIHuEKdUgfz3wIyrrD4qY9li6XHUMteq0kOi4ipWwbOH5ZcCj6Mh1S9Hl7je0vjYEUx6F-yS8A_C3T1iMPASEW0HxDXJbwyS4otTLK1KRntRpI51nomuePL1DxmoP4Q4OrMYsC0DRqKi9XGnYnHseM7d8U-iq2Wh3NzCST6Cd4Ar0-CmZZx9tDAWc09y0EffnArgPYD84h-1yolQeASXqp7wR1HSZUkSDikTCQ-DKu9NQwtqwTfIwr0T9BIalhTOA01xnAYmOlLF8jpdhWjNvaZN97JBEIeGsrk3Go, .expires=Tue, 25 Feb 2014 20:22:52 GMT}";
+			
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+}

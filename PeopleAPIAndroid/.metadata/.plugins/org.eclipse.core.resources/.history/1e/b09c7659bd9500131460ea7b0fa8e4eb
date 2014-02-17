@@ -1,0 +1,66 @@
+package com.peopleapi;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class RegisterActivity extends Activity {
+	private ProgressDialog pDialog;
+	private EditText username = null;
+	private EditText password = null;
+	private EditText confirmPassword = null;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.register_main);
+		username = (EditText) findViewById(R.id.editUserName);
+		password = (EditText) findViewById(R.id.editPassword);
+		confirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.register_main, menu);
+		return true;
+	}
+
+	public void registerUser(View view) {
+		// register a user by passing parameters to the A-sync task
+		String[] apiParms = { username.getText().toString(),
+				password.getText().toString(),
+				confirmPassword.getText().toString() };
+		Object id = null;
+		RegisterWithApi apiCall = new RegisterWithApi(id, RegisterActivity.this);
+		apiCall.execute(apiParms);
+
+	}
+
+	public void setTheUIResponse(String result) {
+
+		String[] apiParms = { username.getText().toString(),
+				password.getText().toString() };
+		Object id = null;
+		LogInToApi apiCall = new LogInToApi(id, RegisterActivity.this);
+		apiCall.execute(apiParms);
+
+		Intent intent = new Intent(RegisterActivity.this, ResultsFromApi.class);
+		intent.putExtra("APIResult", result);
+		startActivity(intent);
+	}
+
+}
